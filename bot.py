@@ -1,10 +1,14 @@
 import discord
 from discord.ext import commands
-import random
+import random,os
+from dotenv import load_dotenv
+load_dotenv()
+
 
 # client = discord.Client()
 bot = commands.Bot(command_prefix='$')
-TOKEN = os.environ.get('TOKEN', 3)
+TOKEN = os.environ.get('TOKEN')
+
 
 
 # Registering an event
