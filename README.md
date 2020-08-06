@@ -21,7 +21,7 @@ Our DMs were simply stuck in the 'pen and paper era' of the 1980s. As die-hard D
 Until COVID-19 hit New York City and all bets were off when it came to using Discord as our medium and continuing to use the 'pen and paper' method.
 So, as a gift to our DMs, we've decided to create this discord bot for the betterment of our DnD club and to our DnD diehard souls.
 
-## Contributers
+## Contributors
 - Jacob Koziej
 - Shaedil Dider
 - Daniel Kogan
