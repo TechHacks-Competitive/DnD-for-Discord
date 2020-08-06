@@ -4,6 +4,7 @@ import random
 
 # client = discord.Client()
 bot = commands.Bot(command_prefix='$')
+TOKEN = os.environ.get('TOKEN', 3)
 
 
 # Registering an event
@@ -32,4 +33,4 @@ async def echo(ctx, message: str):
     await ctx.send(message)
 
 
-bot.run('NzQxMDM4NjcyMzQ1OTU2NDE0.XyxwCw.c4EpKZs1WBo7FRuFAaIRUoLMKHo')
+bot.run(TOKEN)
