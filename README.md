@@ -22,6 +22,6 @@ Until covid-19 hit New York City and all bets were off when it came to using Dis
 So, as a gift to our DMs, we've decided to create this discord bot for the betterment of our DnD club and to our DnD diehard souls.
 
 ## Contributers
-- Jacob K
-- Shaedil D
-- Daniel K
+- Jacob Koziej
+- Shaedil Dider
+- Daniel Kogan
