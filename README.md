@@ -17,11 +17,11 @@ Put simply, this is a Discord bot that helps Dungeon Masters (DMs) create their 
 ## Why?
 As members of our DnD club here at our high-school, we've noticed that there were a few things that were inefficient.
 We've noticed in our DnD club's Discord server that our DMs took too long rolling the dice, creating the world/battle maps and quests
-Our DMs were simply stuck in the 'pen and paper era' of the 1980s. As die-hard DnD enthusiasts before covid-19, we thought this was fine and vintage like.
-Until covid-19 hit New York City and all bets were off when it came to using Discord as our medium and continuing to use the 'pen and paper' method.
+Our DMs were simply stuck in the 'pen and paper era' of the 1980s. As die-hard DnD enthusiasts before COVID-19, we thought this was fine and vintage like.
+Until COVID-19 hit New York City and all bets were off when it came to using Discord as our medium and continuing to use the 'pen and paper' method.
 So, as a gift to our DMs, we've decided to create this discord bot for the betterment of our DnD club and to our DnD diehard souls.
 
-## Contributers
-- Jacob K
-- Shaedil D
-- Daniel K
+## Contributors
+- Jacob Koziej
+- Shaedil Dider
+- Daniel Kogan
