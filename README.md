@@ -1,6 +1,8 @@
-#DnD-for-Discord
+# DnD-for-Discord
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](https://github.com/Shaedil/vim-anki)
+
 *Dungeons & Dragons made easier for Dungeon Masters in Discord*
+
 **To be submitted as part of "Roll for Hacking" Hackathon by MLH**
 
 ## What is this?
