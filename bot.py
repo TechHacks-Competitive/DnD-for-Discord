@@ -75,33 +75,9 @@ async def echo(ctx: commands.Context, message: str):
     await ctx.send(message)
 
 
-@bot.command(name="inventory")
-async def get_inventory(ctx: commands.Context):
-    if ctx.author.id in inventory:
-        inv = "\n".join([f"- {i}" for i in inventory[ctx.author.id]])
-
-        await ctx.author.send(f"Your inventory is:\n{inv}")
-    else:
-        await ctx.author.send(f"You have no items in your inventory!")
-
-    await ctx.message.add_reaction("✔️")
-
-
-@bot.command()
-async def addinv(ctx: commands.Context, item: str):
-    if ctx.author.id not in inventory:
-        inventory[ctx.author.id] = []
-
-    inventory[ctx.author.id].append(item)
-
-    await ctx.message.add_reaction("✔️")
-
-
-
-
-for filename in os.listdir('./cogs'):
-    if filename.endswith('.py'):
-        bot.load_extension(f'cogs.{filename[:-3]}')
+for filename in os.listdir("./cogs"):
+    if filename.endswith(".py"):
+        bot.load_extension(f"cogs.{filename[:-3]}")
 
 
 bot.run(TOKEN)
