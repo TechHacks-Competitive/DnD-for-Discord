@@ -3,11 +3,13 @@ import os
 import random
 
 import discord
-from discord.ext import commands
+from discord.ext import commands, tasks
 from dotenv import load_dotenv
 
 load_dotenv()
 
+bot = commands.Bot(command_prefix="$")
+TOKEN = os.environ.get("TOKEN")
 
 inventory = {}
 old_inventory = {}
@@ -64,9 +66,16 @@ async def echo(ctx: commands.Context, message: str):
     await ctx.send(message)
 
 
-@bot.command()
-async def getinv(ctx: commands.Context):
-    await ctx.send("```\n" + inventory.__str__() + "\n```")
+@bot.command(name="inventory")
+async def get_inventory(ctx: commands.Context):
+    if ctx.author.id in inventory:
+        inv = "\n".join([f"- {i}" for i in inventory[ctx.author.id]])
+
+        await ctx.author.send(f"Your inventory is:\n{inv}")
+    else:
+        await ctx.author.send(f"You have no items in your inventory!")
+
+    await ctx.message.add_reaction("✔️")
 
 
 @bot.command()
