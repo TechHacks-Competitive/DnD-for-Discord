@@ -57,7 +57,7 @@ async def roll(ctx: commands.Context, dice: str = "1d20"):
         return
 
     result = ", ".join(str(random.randint(1, limit)) for r in range(rolls))
-    await ctx.send("**" + str(result) + "**")
+    await ctx.send(f"**{result}**")
 
 
 @bot.command()
@@ -82,8 +82,10 @@ async def get_inventory(ctx: commands.Context):
 async def addinv(ctx: commands.Context, item: str):
     if ctx.author.id not in inventory:
         inventory[ctx.author.id] = []
+
     inventory[ctx.author.id].append(item)
-    await ctx.send("added!")
+
+    await ctx.message.add_reaction("✔️")
 
 
 bot.run(TOKEN)
