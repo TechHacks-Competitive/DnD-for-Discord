@@ -64,7 +64,7 @@ async def roll(ctx: commands.Context, dice: str = "1d20"):
     print(results)
 
     if len(results) > 1:
-        result += f" (sum: {sum(results)})"
+        result += f"\nSum: {sum(results)}"
 
     await ctx.send(result)
 
