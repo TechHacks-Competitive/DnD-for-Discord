@@ -1,17 +1,17 @@
+import os
+import random
+
 import discord
 from discord.ext import commands
-import random, os
 from dotenv import load_dotenv
 
 load_dotenv()
-
 
 # client = discord.Client()
 bot = commands.Bot(command_prefix="$")
 TOKEN = os.environ.get("TOKEN")
 
 
-# Registering an event
 @bot.event
 async def on_ready():
     print("Logged in as")
