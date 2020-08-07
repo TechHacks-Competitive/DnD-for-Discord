@@ -1,59 +1,45 @@
-import os
-import random
-
 import discord
-from discord.ext import commands, tasks
+from discord.ext import commands
+import random,os
 from dotenv import load_dotenv
-
 load_dotenv()
 
+
 # client = discord.Client()
-bot = commands.Bot(command_prefix="$")
-TOKEN = os.environ.get("TOKEN")
+bot = commands.Bot(command_prefix='$')
+TOKEN = os.environ.get('TOKEN')
 
 
-async def update_status():
-    await bot.change_presence(
-        activity=discord.Activity(
-            type=discord.ActivityType.watching,
-            name=f"over {len(bot.guilds)} servers || $help",
-        )
-    )
 
-
+# Registering an event
 @bot.event
 async def on_ready():
-    print("Logged in as")
+    print('Logged in as')
     print(bot.user.name)
+    servers = list(bot.guilds)
+    server_num = len(servers)
     print(bot.user.id)
-    await update_status()
+    await bot.change_presence(
+        activity=discord.Activity(type=discord.ActivityType.watching, name=f"over {server_num} servers || $help"))
 
 
-@tasks.loop(minutes=10)
-async def update_status_loop():
-    await update_status()
 
 
 @bot.command()
-async def roll(ctx, dice: str = "1d20"):
-    """Rolls a dice in NdN format."""
+async def roll(ctx, dice: str):
+    # Rolls a dice in NdN format.
     try:
-        rolls, limit = map(int, dice.split("d"))
-    except:
-        await ctx.send("Format has to be in NdN!")
+        rolls, limit = map(int, dice.split('d'))
+    except Exception:
+        await ctx.send('Format has to be in NdN!')
         return
 
-    # Result is a list of two ints which are summed together
-    result = [random.randint(1, limit) for r in range(rolls)]
-    await ctx.send(sum(result))
-    # The breakdown of each roll is displayed
-    result = ", ".join(str(result))
-    await ctx.send(result)
+    result = ', '.join(str(random.randint(1, limit)) for r in range(rolls))
+    await ctx.send("**"+str(result)+"**")
 
 
 @bot.command()
 async def echo(ctx, message: str):
-    """Echos `message`"""
     await ctx.send(message)
 
 
