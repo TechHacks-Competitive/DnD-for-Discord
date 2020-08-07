@@ -1,3 +1,4 @@
+import json
 import os
 import random
 
@@ -10,6 +11,14 @@ load_dotenv()
 # client = discord.Client()
 bot = commands.Bot(command_prefix="$")
 TOKEN = os.environ.get("TOKEN")
+
+inventory = {}
+old_inventory = {}
+
+if os.path.exists("inventory.json"):
+    with open("inventory.json") as f:
+        inventory = json.load(f)
+        old_inventory = inventory
 
 
 async def update_status():
@@ -34,8 +43,19 @@ async def update_status_loop():
     await update_status()
 
 
+@tasks.loop(minutes=5)
+async def save_inventory():
+    global old_inventory
+
+    if inventory != old_inventory:
+        with open("inventory.json", mode="w") as f:
+            json.dump(inventory, f)
+
+        old_inventory = inventory
+
+
 @bot.command()
-async def roll(ctx, dice: str = "1d20"):
+async def roll(ctx: commands.Context, dice: str = "1d20"):
     """Rolls a dice in NdN format."""
     try:
         rolls, limit = map(int, dice.split("d"))
@@ -48,9 +68,22 @@ async def roll(ctx, dice: str = "1d20"):
 
 
 @bot.command()
-async def echo(ctx, message: str):
+async def echo(ctx: commands.Context, message: str):
     """Echos `message`"""
     await ctx.send(message)
+
+
+@bot.command()
+async def getinv(ctx: commands.Context):
+    await ctx.send("```\n" + inventory.__str__() + "\n```")
+
+
+@bot.command()
+async def addinv(ctx: commands.Context, item: str):
+    if ctx.author.id not in inventory:
+        inventory[ctx.author.id] = []
+    inventory[ctx.author.id].append(item)
+    await ctx.send("added!")
 
 
 bot.run(TOKEN)
