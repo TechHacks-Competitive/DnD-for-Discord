@@ -132,3 +132,6 @@ dmypy.json
 .vscode/
 
 inventory.json
+.history
+cogs/.gen.py.swp
+cogs/__pycache__

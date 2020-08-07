@@ -25,3 +25,7 @@ class Inventory(commands.Cog):
         inventory[ctx.author.id].append(item)
 
         await ctx.message.add_reaction("✔️")
+
+
+def setup(bot):
+    bot.add_cog(Inventory(bot))
