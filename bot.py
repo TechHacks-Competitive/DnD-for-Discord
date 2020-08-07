@@ -88,4 +88,11 @@ async def addinv(ctx: commands.Context, item: str):
     await ctx.message.add_reaction("✔️")
 
 
+
+
+for filename in os.listdir('./cogs'):
+    if filename.endswith('.py'):
+        bot.load_extension(f'cogs.{filename[:-3]}')
+
+
 bot.run(TOKEN)
