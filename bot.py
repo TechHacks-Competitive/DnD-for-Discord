@@ -56,8 +56,17 @@ async def roll(ctx: commands.Context, dice: str = "1d20"):
         await ctx.send("Format has to be in NdN!")
         return
 
-    result = ", ".join(str(random.randint(1, limit)) for r in range(rolls))
-    await ctx.send(f"**{result}**")
+    results = [random.randint(1, limit) for _ in range(rolls)]
+
+    result = ", ".join([str(x) for x in results])
+    result = f"**{result}**"
+
+    print(results)
+
+    if len(results) > 1:
+        result += f" (sum: {sum(results)})"
+
+    await ctx.send(result)
 
 
 @bot.command()
