@@ -29,7 +29,7 @@ async def on_ready():
 
 @bot.command()
 async def roll(ctx, dice: str):
-    # Rolls a dice in NdN format.
+    """Rolls a dice in NdN format."""
     try:
         rolls, limit = map(int, dice.split("d"))
     except Exception:
@@ -42,6 +42,7 @@ async def roll(ctx, dice: str):
 
 @bot.command()
 async def echo(ctx, message: str):
+    """Echos `message`"""
     await ctx.send(message)
 
 
