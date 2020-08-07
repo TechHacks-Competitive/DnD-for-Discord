@@ -28,7 +28,11 @@ async def roll(ctx, dice: str):
         await ctx.send("Format has to be in NdN!")
         return
 
-    result = ", ".join(str(random.randint(1, limit)) for r in range(rolls))
+    # Result is a list of two ints which are summed together
+    result = [random.randint(1, limit) for r in range(rolls)]
+    await ctx.send(sum(result))
+    # The breakdown of each roll is displayed
+    result = ", ".join(str(result))
     await ctx.send(result)
 
 
