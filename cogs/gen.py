@@ -4,16 +4,16 @@ from discord.ext import commands
 from discord import Member
 import json
 
-with open('loot.json') as f:
-    data = json.load(f)  
-    
+with open("loot.json") as f:
+    data = json.load(f)
+
 weighted_tb = []
 def write_json(data, filename='loot.json'): 
     with open(filename,'w') as f: 
         json.dump(data, f, indent=4) 
 
-class Gen(commands.Cog):    
-          
+
+class Gen(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -23,13 +23,14 @@ class Gen(commands.Cog):
         loot_table = data["level_1"]["magic_tb"]
         cust_loot_table = data["level_1"]["dm_"]["discriminator"]
         for item,weight in loot_table:
+
             for _ in range(weight):
                 weighted_tb.append(item)
 
     @commands.command()
     async def hi(self, ctx):
         await ctx.send("this was sent from a cog lol")
-         
+
     @commands.command()
     async def loot(self, ctx, items=1):
         invn = ""
@@ -58,6 +59,7 @@ class Gen(commands.Cog):
         for cust_itm in data["level_1"]["dm_"]["discriminator"][nums]:
             invn += cust_itm + '\n'
         await ctx.send('```'+invn+'```')
+
 
 
 def setup(bot):
