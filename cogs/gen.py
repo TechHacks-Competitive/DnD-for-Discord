@@ -2,6 +2,7 @@
 import discord, time, random
 from discord.ext import commands
 from discord import Member
+import json
 
 
 class Gen(commands.Cog):
