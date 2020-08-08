@@ -4,6 +4,7 @@ import random
 
 import discord
 from discord.ext import commands, tasks
+from discord.ext import commands
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -56,6 +57,12 @@ async def echo(ctx: commands.Context, message: str):
     await ctx.send(message)
 
 
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error,commands.CommandNotFound):
+        await ctx.send('Command not found')
+    else:
+        await ctx.send(error)
 
 
 for filename in os.listdir("./cogs"):
