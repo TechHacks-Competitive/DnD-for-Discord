@@ -47,9 +47,7 @@ class TMZ(commands.Cog):
                 today_target = tz_target.localize(today)
                 today_utc = utc.localize(today)
                 utc_offset = (today_utc - today_target).total_seconds() / 3600
-                await ctx.send(
-                    f"You are: {utc_offset} hours away from UTC"
-                )
+                await ctx.send(f"You are: {utc_offset} hours away from UTC")
 
 
 def setup(bot):

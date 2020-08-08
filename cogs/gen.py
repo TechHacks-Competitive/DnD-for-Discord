@@ -11,8 +11,10 @@ with open("loot.json") as f:
     data = json.load(f)
 
 weighted_tb = []
-def write_json(data, filename='loot.json'):
-    with open(filename, 'w') as f:
+
+
+def write_json(data, filename="loot.json"):
+    with open(filename, "w") as f:
         json.dump(data, f, indent=4)
 
 
@@ -43,8 +45,8 @@ class Gen(commands.Cog):
             cust_w_tb.append(i)
 
         for _ in range(items):
-            invn += (random.choice(cust_w_tb)) + '\n'
-        await ctx.send('```'+invn+'```')
+            invn += (random.choice(cust_w_tb)) + "\n"
+        await ctx.send("```" + invn + "```")
 
     @commands.command()
     async def add_loot(self, ctx, *, item):
@@ -64,7 +66,7 @@ class Gen(commands.Cog):
             data["level_1"]["dm_"]["discriminator"][nums].remove(item)
             await ctx.send("removed!")
         else:
-            await ctx.send('lol that isn\'t in your custom loot table')
+            await ctx.send("lol that isn't in your custom loot table")
         write_json(data)
 
     @commands.command()
@@ -76,8 +78,8 @@ class Gen(commands.Cog):
                 nums = ctx.author.id
             invn = ""
             for cust_itm in data["level_1"]["dm_"]["discriminator"][nums]:
-                invn += cust_itm + '\n'
-            await ctx.send('```'+invn+'```')
+                invn += cust_itm + "\n"
+            await ctx.send("```" + invn + "```")
         except KeyError:
             await ctx.send("no custom loot detected")
 
