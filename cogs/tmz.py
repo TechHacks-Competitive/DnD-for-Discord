@@ -13,13 +13,13 @@ from pytz import country_timezones, timezone, utc
 from timezonefinder import TimezoneFinder
 
 
-with open("timezone.json") as f:
-    data = json.load(f)
+# with open("timezone.json") as f:
+#     data = json.load(f)
 
 
-def write_json(data, filename='timezone.json'):
-    with open(filename, 'w') as f:
-        json.dump(data, f, indent=4)
+# def write_json(data, filename='timezone.json'):
+#     with open(filename, 'w') as f:
+#         json.dump(data, f, indent=4)
 
 
 class TMZ(commands.Cog):

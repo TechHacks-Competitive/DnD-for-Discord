@@ -23,38 +23,31 @@ class Gen(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print("gen.py is active")
-        
+
         loot_table = data["level_1"]["magic_tb"]
-<<<<<<< HEAD
         cust_loot_table = data["level_1"]["dm_"]["discriminator"]
         for item, weight in loot_table:
-
-=======
-        for item,weight in loot_table:
->>>>>>> b5d509affb3341915f0dbac4764b694ac54e1762
             for _ in range(weight):
                 weighted_tb.append(item)
-
-
 
     @commands.command()
     async def loot(self, ctx, items=1):
         invn = ""
         cust_w_tb = weighted_tb.copy()
-        
+
         role = get(ctx.guild.roles, name="DM")
         for dm in role.members:
             DM = dm
         cust_loot_table = data["level_1"]["dm_"]["discriminator"][dm.discriminator]
         for i in cust_loot_table:
             cust_w_tb.append(i)
-            
+
         for _ in range(items):
             invn += (random.choice(cust_w_tb)) + '\n'
         await ctx.send('```'+invn+'```')
-        
+
     @commands.command()
-    async def add_loot(self, ctx,*,item):
+    async def add_loot(self, ctx, *, item):
         nums = ctx.author.id
         if nums in data["level_1"]["dm_"]["discriminator"]:
             data["level_1"]["dm_"]["discriminator"][nums].append(item)
@@ -63,9 +56,9 @@ class Gen(commands.Cog):
 
         write_json(data)
         await ctx.send("added!")
-     
+
     @commands.command()
-    async def del_loot(self, ctx,*,item):
+    async def del_loot(self, ctx, *, item):
         nums = ctx.author.discriminator
         if nums in data["level_1"]["dm_"]["discriminator"]:
             data["level_1"]["dm_"]["discriminator"][nums].remove(item)
@@ -73,9 +66,9 @@ class Gen(commands.Cog):
         else:
             await ctx.send('lol that isn\'t in your custom loot table')
         write_json(data)
-     
+
     @commands.command()
-    async def cust_loot(self, ctx, nums: Member=0):
+    async def cust_loot(self, ctx, nums: Member = 0):
         try:
             if nums:
                 nums = nums.id
@@ -87,7 +80,6 @@ class Gen(commands.Cog):
             await ctx.send('```'+invn+'```')
         except KeyError:
             await ctx.send("no custom loot detected")
-
 
 
 def setup(bot):

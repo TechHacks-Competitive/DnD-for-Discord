@@ -2,13 +2,8 @@ import json
 import os
 
 import discord
-<<<<<<< HEAD
-from discord.ext import commands
-import json
 from discord import Member
-=======
 from discord.ext import commands, tasks
->>>>>>> b5d509affb3341915f0dbac4764b694ac54e1762
 
 
 class Inventory(commands.Cog):
@@ -33,13 +28,8 @@ class Inventory(commands.Cog):
 
     @commands.command(name="inventory")
     async def get_inventory(self, ctx: commands.Context):
-<<<<<<< HEAD
-        if ctx.author.id in inventory:
-            inv = "\n".join([f"- {items}" for items in inventory[ctx.author.id]])
-=======
         if ctx.author.id in self.inventory:
-            inv = "\n".join([f"- {i}" for i in self.inventory[ctx.author.id]])
->>>>>>> b5d509affb3341915f0dbac4764b694ac54e1762
+            inv = "\n".join([f"- {items}" for items in self.inventory[ctx.author.id]])
 
             await ctx.author.send(f"Your inventory is:\n{inv}")
         else:
