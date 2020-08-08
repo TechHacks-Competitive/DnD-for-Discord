@@ -50,6 +50,16 @@ class Gen(commands.Cog):
         await ctx.send("added!")
      
     @commands.command()
+    async def del_loot(self, ctx,*,item):
+        nums = ctx.author.discriminator
+        if nums in data["level_1"]["dm_"]["discriminator"]:
+            data["level_1"]["dm_"]["discriminator"][nums].remove(item)
+            await ctx.send("removed!")
+        else:
+            await ctx.send('lol that isn\'t in your custom loot table')
+        write_json(data)
+     
+    @commands.command()
     async def cust_loot(self, ctx, nums: Member=0):
         if nums:
             nums = nums.discriminator
