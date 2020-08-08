@@ -2,6 +2,7 @@
 import discord, time, random
 from discord.ext import commands
 from discord import Member
+from discord.utils import get
 import json
 
 with open("loot.json") as f:
@@ -20,19 +21,28 @@ class Gen(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print("gen.py is active")
+        
         loot_table = data["level_1"]["magic_tb"]
-        cust_loot_table = data["level_1"]["dm_"]["discriminator"]
         for item,weight in loot_table:
-
             for _ in range(weight):
                 weighted_tb.append(item)
+
 
 
     @commands.command()
     async def loot(self, ctx, items=1):
         invn = ""
+        cust_w_tb = weighted_tb.copy()
+        
+        role = get(ctx.guild.roles, name="DM")
+        for dm in role.members:
+            DM = dm
+        cust_loot_table = data["level_1"]["dm_"]["discriminator"][dm.discriminator]
+        for i in cust_loot_table:
+            cust_w_tb.append(i)
+            
         for _ in range(items):
-            invn += (random.choice(weighted_tb)) + '\n'
+            invn += (random.choice(cust_w_tb)) + '\n'
         await ctx.send('```'+invn+'```')
         
     @commands.command()
