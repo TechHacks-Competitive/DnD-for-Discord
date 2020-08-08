@@ -80,7 +80,7 @@ class Gen(commands.Cog):
             nums=str(nums)
                 
             invn = '\n'.join(data["level_1"]["dm_"]["discriminator"][str(nums)])
-            print(invn)
+            #print(invn)
             invn = f'\n```\n{invn}\n```\n'
             
             await ctx.send(invn)
