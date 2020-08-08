@@ -5,6 +5,8 @@ from discord import Member
 from discord.utils import get
 import json
 
+# TODO: ADD WEIGHTS TO CUSTOM ITEMS TOO
+
 with open("loot.json") as f:
     data = json.load(f)
 
