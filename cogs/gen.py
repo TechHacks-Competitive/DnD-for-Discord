@@ -70,14 +70,17 @@ class Gen(commands.Cog):
      
     @commands.command()
     async def cust_loot(self, ctx, nums: Member=0):
-        if nums:
-            nums = nums.id
-        else:
-            nums = ctx.author.id
-        invn = ""
-        for cust_itm in data["level_1"]["dm_"]["discriminator"][nums]:
-            invn += cust_itm + '\n'
-        await ctx.send('```'+invn+'```')
+        try:
+            if nums:
+                nums = nums.id
+            else:
+                nums = ctx.author.id
+            invn = ""
+            for cust_itm in data["level_1"]["dm_"]["discriminator"][nums]:
+                invn += cust_itm + '\n'
+            await ctx.send('```'+invn+'```')
+        except KeyError:
+            await ctx.send("no custom loot detected")
 
 
 
