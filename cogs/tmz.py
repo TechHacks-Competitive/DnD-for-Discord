@@ -61,16 +61,13 @@ class TMZ(commands.Cog):
                 await ctx.author.send(f"Your timezone: (UTC{authortimezone})")
             elif authortimezone >= 0:
                 await ctx.author.send(f"Your timezone: (UTC+{authortimezone})")
+        await ctx.message.delete()
 
     # @commands.command(name="nextgametime")
     # async def nextgametime(self, ctx, ip):
     #     """
     #     returns the best time to play the next game
     #     """commands
-
-    @bot.event
-    async def on_command_completion(ctx):
-        await ctx.message.delete()
 
 
 def setup(bot):
