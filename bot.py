@@ -11,14 +11,6 @@ load_dotenv()
 bot = commands.Bot(command_prefix="$")
 TOKEN = os.environ.get("TOKEN")
 
-inventory = {}
-old_inventory = {}
-
-if os.path.exists("inventory.json"):
-    with open("inventory.json") as f:
-        inventory = json.load(f)
-        old_inventory = inventory
-
 
 # Registering an event
 @bot.event
@@ -34,17 +26,6 @@ async def on_ready():
             name=f"over {server_num} servers || $help",
         )
     )
-
-
-@tasks.loop(minutes=5)
-async def save_inventory():
-    global old_inventory
-
-    if inventory != old_inventory:
-        with open("inventory.json", mode="w") as f:
-            json.dump(inventory, f)
-
-        old_inventory = inventory
 
 
 @bot.command()
