@@ -1,18 +1,103 @@
-{        
+{
     "level_1": {
-    "strange_tb": [""],
-    "magic_tb": [["potion of healing",50],["spell scroll (cantrip)",10],["bag of holding",1],["driftglobe",1],["spell scroll (level 1)",10],["spell scroll (level 2)",5]],
-    "dm_": {
-        "discord_numbers": {}
-        }
-    },
-
-    "level_2": {
-        "strange_tb": [""],
-        "magic_tb": [["potion of greater healing",15],["immovable rod",1],["ring of swimming",1],["dust of sneezing and choking",3],["helm of comprehend languages",1],["potion of firebreath",8],["potion of resistance",10],["spell scroll (cantrip)",10],["bag of holding",5],["driftglobe",1],["spell scroll (level 1)",5],["spell scroll (level 2)",15]],
+        "strange_tb": [
+            ""
+        ],
+        "magic_tb": [
+            [
+                "potion of healing",
+                50
+            ],
+            [
+                "spell scroll (cantrip)",
+                10
+            ],
+            [
+                "bag of holding",
+                1
+            ],
+            [
+                "driftglobe",
+                1
+            ],
+            [
+                "spell scroll (level 1)",
+                10
+            ],
+            [
+                "spell scroll (level 2)",
+                5
+            ]
+        ],
         "dm_": {
-            "discord_numbers": {}
+            "discriminator": {
+                "5940": [
+                    "daniel's extremely precious item",
+                    "item1",
+                    "daniel's"
+                ],
+                "9408": [
+                    "potion of healing"
+                ]
             }
         }
-        
+    },
+    "level_2": {
+        "strange_tb": [
+            ""
+        ],
+        "magic_tb": [
+            [
+                "potion of greater healing",
+                15
+            ],
+            [
+                "immovable rod",
+                1
+            ],
+            [
+                "ring of swimming",
+                1
+            ],
+            [
+                "dust of sneezing and choking",
+                3
+            ],
+            [
+                "helm of comprehend languages",
+                1
+            ],
+            [
+                "potion of firebreath",
+                8
+            ],
+            [
+                "potion of resistance",
+                10
+            ],
+            [
+                "spell scroll (cantrip)",
+                10
+            ],
+            [
+                "bag of holding",
+                5
+            ],
+            [
+                "driftglobe",
+                1
+            ],
+            [
+                "spell scroll (level 1)",
+                5
+            ],
+            [
+                "spell scroll (level 2)",
+                15
+            ]
+        ],
+        "dm_": {
+            "discriminator": {}
+        }
+    }
 }
