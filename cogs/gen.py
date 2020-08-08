@@ -27,9 +27,6 @@ class Gen(commands.Cog):
             for _ in range(weight):
                 weighted_tb.append(item)
 
-    @commands.command()
-    async def hi(self, ctx):
-        await ctx.send("this was sent from a cog lol")
 
     @commands.command()
     async def loot(self, ctx, items=1):
