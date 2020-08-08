@@ -133,6 +133,7 @@ dmypy.json
 .vscode/
 
 inventory.json
+loot.json
 .history
 cogs/.gen.py.swp
 cogs/__pycache__
