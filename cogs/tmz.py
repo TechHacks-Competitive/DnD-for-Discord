@@ -68,6 +68,10 @@ class TMZ(commands.Cog):
     #     returns the best time to play the next game
     #     """commands
 
+    @bot.event
+    async def on_command_completion(ctx):
+        await ctx.message.delete()
+
 
 def setup(bot):
     bot.add_cog(TMZ(bot))

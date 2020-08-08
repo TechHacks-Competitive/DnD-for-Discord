@@ -28,12 +28,6 @@ async def on_ready():
     )
 
 
-@bot.event
-async def on_message(ctx, message):
-    if message.content.startswith("$get_timezone"):
-        await message.delete()
-
-
 @bot.command()
 async def roll(ctx: commands.Context, dice: str = "1d20"):
     """Rolls a dice in NdN format."""
