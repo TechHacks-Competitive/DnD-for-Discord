@@ -12,7 +12,7 @@ class TMZ(commands.Cog):
         self.bot = bot
     
     @commands.command(name="get_offset")
-    async def get_offset(self,ctx, lat,lng):
+    async def get_offset(self,ctx,lat,lng):
         """
         returns a location's time zone offset from UTC in minutes.
         """
