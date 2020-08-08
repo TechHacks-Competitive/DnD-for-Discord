@@ -30,9 +30,16 @@ class TMZ(commands.Cog):
             ) as r:
                 r = await r.json()
                 lat = r["address"]["latitude"]
-                long = r["address"]["longitude"]
+                lng = r["address"]["longitude"]
 
-                await ctx.send(f"[{lat}, {long}]")
+                today = datetime.now()
+                tf = TimezoneFinder()
+                tz_target = timezone(tf.certain_timezone_at(lng=lng, lat=lat))
+                today_target = tz_target.localize(today)
+                today_utc = utc.localize(today)
+                await ctx.send(
+                    f"You are: {(today_utc - today_target).total_seconds() / 60} hours away from UTC"
+                )
 
 
 def setup(bot):
