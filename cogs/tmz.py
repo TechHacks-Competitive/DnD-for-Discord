@@ -18,7 +18,7 @@ class TMZ(commands.Cog):
         returns a location's time zone offset from UTC in minutes.
         """
         lat = float(lat)
-        lng = float(lng)1
+        lng = float(lng)
 
         today = datetime.now()
         tf = TimezoneFinder()

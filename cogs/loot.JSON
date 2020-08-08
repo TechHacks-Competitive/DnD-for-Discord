@@ -1,5 +1,4 @@
 {        
-
     "level_1": {
     "strange_tb": [""],
     "magic_tb": [["potion of healing",50],["spell scroll (cantrip)",10],["bag of holding",1],["driftglobe",1],["spell scroll (level 1)",10],["spell scroll (level 2)",5]],
@@ -15,6 +14,5 @@
             "discord_numbers": {}
             }
         }
-
-
+        
 }

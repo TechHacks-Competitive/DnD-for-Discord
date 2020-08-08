@@ -5,20 +5,18 @@ from discord import Member
 import json
 
 
-class Gen(commands.Cog):
+class Gen(commands.Cog):    
     
-    
-    Loot = ["coins","sword","shield"]
-    
-    
-    
-    
+    with open('loot.json') as f:
+        data = json.load(f)  
+          
     def __init__(self, bot):
         self.bot = bot
 
     @commands.Cog.listener()
     async def on_ready(self):
         print("gen.py is active")
+        print(data)
 
     @commands.command()
     async def hi(self, ctx):
