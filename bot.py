@@ -56,6 +56,8 @@ async def echo(ctx: commands.Context, message: str):
     await ctx.send(message)
 
 
+
+
 for filename in os.listdir("./cogs"):
     if filename.endswith(".py"):
         bot.load_extension(f"cogs.{filename[:-3]}")
