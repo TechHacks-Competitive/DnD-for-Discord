@@ -39,7 +39,7 @@ class Gen(commands.Cog):
         await ctx.send('```'+invn+'```')
         
     @commands.command()
-    async def add_loot(self, ctx, item):
+    async def add_loot(self, ctx,*,item):
         nums = ctx.author.discriminator
         if nums in data["level_1"]["dm_"]["discriminator"]:
             data["level_1"]["dm_"]["discriminator"][nums].append(item)
