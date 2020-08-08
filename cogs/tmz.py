@@ -13,14 +13,23 @@ from pytz import country_timezones, timezone, utc
 from timezonefinder import TimezoneFinder
 
 
+with open("timezone.json") as f:
+    data = json.load(f)
+
+
+def write_json(data, filename='timezone.json'):
+    with open(filename, 'w') as f:
+        json.dump(data, f, indent=4)
+
+
 class TMZ(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="get_timezone")
-    async def get_timezone(self, ctx, ip):
+    @commands.command(name="nextgametime")
+    async def nextgametime(self, ctx, ip):
         """
-        returns a location's time zone offset from UTC in minutes
+        returns the next optimal time to play the next session
         """
         async with aiohttp.ClientSession() as session:
             async with session.get(
@@ -37,8 +46,9 @@ class TMZ(commands.Cog):
                 tz_target = timezone(tf.certain_timezone_at(lng=lng, lat=lat))
                 today_target = tz_target.localize(today)
                 today_utc = utc.localize(today)
+                utc_offset = (today_utc - today_target).total_seconds() / 3600
                 await ctx.send(
-                    f"You are: {(today_utc - today_target).total_seconds() / 60} hours away from UTC"
+                    f"You are: {utc_offset} hours away from UTC"
                 )
 
 

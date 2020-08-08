@@ -8,9 +8,9 @@ with open("loot.json") as f:
     data = json.load(f)
 
 weighted_tb = []
-def write_json(data, filename='loot.json'): 
-    with open(filename,'w') as f: 
-        json.dump(data, f, indent=4) 
+def write_json(data, filename='loot.json'):
+    with open(filename, 'w') as f:
+        json.dump(data, f, indent=4)
 
 
 class Gen(commands.Cog):
@@ -22,7 +22,7 @@ class Gen(commands.Cog):
         print("gen.py is active")
         loot_table = data["level_1"]["magic_tb"]
         cust_loot_table = data["level_1"]["dm_"]["discriminator"]
-        for item,weight in loot_table:
+        for item, weight in loot_table:
 
             for _ in range(weight):
                 weighted_tb.append(item)
