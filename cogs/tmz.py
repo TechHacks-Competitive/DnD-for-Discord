@@ -69,7 +69,7 @@ class TMZ(commands.Cog):
         await ctx.message.delete()
 
     @commands.command(name="nextgametime")
-    async def nextgametime(self, ctx):
+    async def nextgametime(self, ctx, pref=""):
         """
         returns the best time to play the next game
         """
@@ -142,22 +142,45 @@ class TMZ(commands.Cog):
                 late.append(x[0])
         early = early[:3]
         late = late[:3]
-        message = "Early times:\n"
-        for x in early:
-            if x > 12:
-                x = str(x - 12) + " PM"
-                message += f"- {x}\n"
-            else:
-                x = str(x) + " AM"
-                message += f"- {x}\n"
-        message += "\nLate Times:\n"
-        for x in late:
-            if x > 12:
-                x = str(x - 12) + " PM"
-                message += f"- {x}\n"
-            else:
-                x = str(x) + " AM"
-                message += f"- {x}\n"
+
+        message = ""
+
+        pref = pref.lower()
+
+        if pref == "early":
+            for x in early:
+                if x > 12:
+                    x = str(x - 12) + " PM"
+                    message += f"- {x}\n"
+                else:
+                    x = str(x) + " AM"
+                    message += f"- {x}\n"
+        elif pref == "late":
+            for x in late:
+                if x > 12:
+                    x = str(x - 12) + " PM"
+                    message += f"- {x}\n"
+                else:
+                    x = str(x) + " AM"
+                    message += f"- {x}\n"
+        else:
+            message = "Early times:\n"
+            for x in early:
+                if x > 12:
+                    x = str(x - 12) + " PM"
+                    message += f"- {x}\n"
+                else:
+                    x = str(x) + " AM"
+                    message += f"- {x}\n"
+            message += "\nLate Times:\n"
+            for x in late:
+                if x > 12:
+                    x = str(x - 12) + " PM"
+                    message += f"- {x}\n"
+                else:
+                    x = str(x) + " AM"
+                    message += f"- {x}\n"
+
         await ctx.send(message)
 
 
