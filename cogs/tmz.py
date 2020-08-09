@@ -74,13 +74,13 @@ class TMZ(commands.Cog):
         returns the best time to play the next game
         """
         # 1. [X] get list of timezones of each player from timezone.json
-        # 2. create absolute UTC array of 0 = dark hours and !0 = wake hours
-        # 3. create more timezone equivalent arrays via subtracting/adding each value by the UTC offset #
+        # 2. [X] create absolute UTC array of 0 = dark hours and !0 = wake hours
+        # 3. [X] create more timezone equivalent arrays via subtracting/adding each value by the UTC offset #
         # FORMAT:
         # [1,   2,  3,  4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24] UTC(0)
         # [21, 22, 23, 24, 1, 2, 3, 4, 5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20] EST(-4)
         # etc
-        # 4. Loop through the same columns of these arrays and return the column with the most amount of non-zero numbers
+        # 4. [X] Loop through the same columns of these arrays and return the column with the most amount of non-zero numbers
         UTC = [
             1,
             2,
@@ -110,20 +110,15 @@ class TMZ(commands.Cog):
         UTC = [
             0 if hour > 22 or hour < 7 else hour for hour in UTC
         ]  # Replace sleeping hours with 0s
-
         equiv = {}
-
         for member in self.tz.keys():
             equiv[member] = []
-
             for x in [x + self.tz[member] for x in UTC]:
                 if x == 1:
                     equiv[member].append(0)
                 else:
                     equiv[member].append(x)
-
         good = {}
-
         for member in self.tz.keys():
             for idx, eq in enumerate(equiv[member]):
                 if eq != 0:
@@ -131,41 +126,38 @@ class TMZ(commands.Cog):
                         good[idx] = 1
                     else:
                         good[idx] += 1
-
         good = sorted(good.items(), key=lambda x: x[1], reverse=True)
-
         el = {}
-
         for x in good:
             h = x[0]
-
             el[h] = 0 if h <= 15 and h >= 6 else 1
-
         print(good)
-
         early = []
         for x in good:
             if el[x[0]] == 0:
                 early.append(x[0])
-
         late = []
         for x in good:
             if el[x[0]] == 1:
                 late.append(x[0])
-
         early = early[:3]
         late = late[:3]
-
         message = "Early times:\n"
-
         for x in early:
-            message += f"- Hour {x}\n"
-
+            if x > 12:
+                x = str(x - 12) + " PM"
+                message += f"- {x}\n"
+            else:
+                x = str(x) + " AM"
+                message += f"- {x}\n"
         message += "\nLate Times:\n"
-
         for x in late:
-            message += f"- Hour {x}\n"
-
+            if x > 12:
+                x = str(x - 12) + " PM"
+                message += f"- {x}\n"
+            else:
+                x = str(x) + " AM"
+                message += f"- {x}\n"
         await ctx.send(message)
 
 
