@@ -68,16 +68,18 @@ class TMZ(commands.Cog):
         """
         returns the best time to play the next game
         """
-        # 1. get list of timezones of each player from timezone.json
+        # 1. [X] get list of timezones of each player from timezone.json
         # 2. create absolute UTC array of 0 = dark hours and !0 = wake hours
-        # 3. create more timezone equivalent arrays via subtracting each value by the UTC offset #
-        # [1,   2   3,  4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24] UTC(0)
+        # 3. create more timezone equivalent arrays via subtracting/adding each value by the UTC offset #
+        # FORMAT:
+        # [1,   2,  3,  4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24] UTC(0)
         # [21, 22, 23, 24, 1, 2, 3, 4, 5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20] EST(-4)
-        # [0,   0   0,  0, 0, 0, 0, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,  0,  0] GMT(1)
         # etc
         # 4. Loop through the same columns of these arrays and return the column with the most amount of non-zero numbers
-        playerstimezones = [timezones for timezones in self.tz]
+        playerstimezones = [timezones for players in self.tz for timezones in self.tz[players]]
         print(playerstimezones)
+        UTC = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+        UTC = [0 if hour > 22 or hour < 7 else hour for hour in UTC]  # Replace sleeping hours with 0s
 
 
 def setup(bot):
