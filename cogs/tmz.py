@@ -76,6 +76,7 @@ class TMZ(commands.Cog):
         # [21, 22, 23, 24, 1, 2, 3, 4, 5,  6,  7,  8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20] EST(-4)
         # etc
         # 4. Loop through the same columns of these arrays and return the column with the most amount of non-zero numbers
+        # 5. Return the UTC hour equivalent of that column and print to chat as ""
         playerstimezones = [timezones for players in self.tz for timezones in self.tz[players]]
         print(playerstimezones)
         UTC = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
