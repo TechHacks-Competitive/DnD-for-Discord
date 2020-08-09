@@ -134,6 +134,7 @@ dmypy.json
 
 inventory.json
 loot.json
+timezone.json
 .history
 cogs/.gen.py.swp
 cogs/__pycache__
